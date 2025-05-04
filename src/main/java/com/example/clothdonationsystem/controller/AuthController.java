@@ -107,7 +107,7 @@ public class AuthController {
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
 
-        if (strRoles == null) {
+        if (strRoles == null || strRoles.isEmpty() ) {
             Role userRole = roleRepository.findByRole(RoleEnum.ROLE_USER)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             roles.add(userRole);
@@ -158,6 +158,6 @@ public class AuthController {
 
     @PostMapping("/newPassword")
     public ResponseEntity<?> createNewPassword(@RequestParam String email,@RequestParam String password,@RequestParam String confirmPassword) throws ResourceNotFoundException {
-        return ResponseEntity.ok(userService.changePassword(email,password,confirmPassword));
-    }
+		return ResponseEntity.ok(userService.changePassword(email, password, confirmPassword));
+	}
 }

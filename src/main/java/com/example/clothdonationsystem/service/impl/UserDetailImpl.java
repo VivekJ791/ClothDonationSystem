@@ -19,7 +19,12 @@ import java.util.stream.Collectors;
 @Builder
 public class UserDetailImpl implements UserDetails {
 
-    private Long id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Long id;
 
     private String username;
 
